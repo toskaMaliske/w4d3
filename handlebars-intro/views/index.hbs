@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    {{!-- inject the values for the `firstName` and `lastName` properties in the options object --}}
+    <h1>Hello {{ firstName }} {{ lastName }}!</h1>
+    {{!-- the {{{}}} unescapes HTML --}}
+    {{{ text }}}
+
+    {{#if foo}}
+    There is foo
+    {{else}}
+    There is no foo
+    {{/if}}
+
+    {{#unless foo}}
+    There is no foo
+    {{/unless}}
+
+
+    {{#if cities}}
+    <h2>Cities</h2>
+    <ul>
+        {{#each cities}}
+        <li>{{@index}} {{this}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{obj.a}} {{obj.b}} {{obj.c}}
+    {{!-- #with switches the context to `obj` --}}
+    {{#with obj}}
+    {{a}} {{b}} {{c}}
+    {{!-- `firstName` is not defined in the `obj` object but in the parent object so we have to go up one level --}}
+    {{../firstName}}
+    {{/with}}
+</body>
+
+</html>
