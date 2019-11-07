@@ -1,6 +1,9 @@
 const express = require("express");
 const players = require("./data");
+const hbs = require("hbs");
 const app = express();
+
+hbs.registerPartials(__dirname + "/views/partials");
 
 app.set("view engine", "hbs");
 
@@ -13,7 +16,8 @@ app.get("/", (request, response) => {
 
 app.get("/players", (request, response) => {
   const options = {
-    playersList: players
+    // players: players
+    players
   };
   response.render("players.hbs", options);
 });
